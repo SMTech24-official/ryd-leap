@@ -285,7 +285,9 @@ const resetPasswordFromAppIntoDB = async (payload: {
     where: {
       phoneNumber: payload.phoneNumber,
     },
-    data: password,
+    data: {
+      password: password,
+    },
   });
 
   return user;
