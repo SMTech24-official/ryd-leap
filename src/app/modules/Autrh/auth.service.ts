@@ -263,7 +263,7 @@ const resetPassword = async (
 };
 
 //reset password for app
-const resetPasswordFromApp = async (payload: {
+const resetPasswordFromAppIntoDB = async (payload: {
   phoneNumber: string;
   newPassword: string;
 }) => {
@@ -298,5 +298,5 @@ export const AuthServices = {
   changePassword,
   forgotPassword,
   resetPassword,
-  resetPasswordFromApp,
+  resetPasswordFromAppIntoDB,
 };
