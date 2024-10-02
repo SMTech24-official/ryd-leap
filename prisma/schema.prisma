@@ -86,11 +86,10 @@ model RiderVehicleInfo {
 }
 
 model Offer {
-  id               String  @id @default(auto()) @map("_id") @db.ObjectId
-  promotionsOffer  String
-
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  promotionsOffer String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 enum UserRole {

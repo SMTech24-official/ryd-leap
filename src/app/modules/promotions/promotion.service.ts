@@ -1,7 +1,8 @@
-import { PrismaClient } from "@prisma/client";
-import ApiError from "../../errors/ApiErrors";
 
-const prisma = new PrismaClient();
+import ApiError from "../../errors/ApiErrors";
+import prisma from "../../../shared/prisma";
+
+
 
 const createPromotionsIntoDB = async (payload: any) => {
   const promotion = await prisma.offer.create({
