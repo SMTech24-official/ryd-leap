@@ -100,6 +100,17 @@ const resetPassword = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const resetPasswordFromApp = catchAsync(async (req: Request, res: Response) => {
+  await AuthServices.resetPasswordFromAppIntoDB(req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Password Reset Successfully",
+    data: null,
+  });
+});
+
 export const AuthController = {
   loginUser,
   logoutUser,
@@ -108,4 +119,5 @@ export const AuthController = {
   changePassword,
   forgotPassword,
   resetPassword,
+  resetPasswordFromApp,
 };

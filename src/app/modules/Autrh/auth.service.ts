@@ -262,6 +262,37 @@ const resetPassword = async (
   return { message: "Password reset successfully" };
 };
 
+//reset password for app
+const resetPasswordFromAppIntoDB = async (payload: {
+  phoneNumber: string;
+  newPassword: string;
+}) => {
+  const user = await prisma.user.findUnique({
+    where: { phoneNumber: payload.phoneNumber },
+  });
+
+  if (!user) {
+    throw new ApiError(404, "user not found");
+  }
+
+  // hash password
+  const password = await bcrypt.hash(
+    payload.newPassword,
+    Number(config.bcrypt_salt_rounds)
+  );
+
+  await prisma.user.update({
+    where: {
+      phoneNumber: payload.phoneNumber,
+    },
+    data: {
+      password: password,
+    },
+  });
+
+  return user;
+};
+
 export const AuthServices = {
   loginUser,
   refreshToken,
@@ -269,4 +300,5 @@ export const AuthServices = {
   changePassword,
   forgotPassword,
   resetPassword,
+  resetPasswordFromAppIntoDB,
 };

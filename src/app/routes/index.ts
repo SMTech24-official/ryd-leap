@@ -3,6 +3,7 @@ import { userRoutes } from "../modules/User/user.route";
 import { AuthRoutes } from "../modules/Autrh/auth.routes";
 import { SendMessageRoutes } from "../modules/otp/otp.route";
 import { RiderVehicleInfoRoutes } from "../modules/riderVehicleInfo/riderVehicleInfo.route";
+import { promotionsRoute } from "../modules/promotions/promotion.routes";
 
 
 const router = express.Router();
@@ -23,6 +24,10 @@ const moduleRoutes = [
   {
     path: "/riderVehicleInfo",
     route: RiderVehicleInfoRoutes,
+  },
+  {
+    path: "/promotions",
+    route: promotionsRoute,
   },
 ];
 
