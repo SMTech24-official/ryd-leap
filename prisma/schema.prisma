@@ -85,6 +85,14 @@ model RiderVehicleInfo {
   @@map("RiderVehicleInfos")
 }
 
+model Offer {
+  id               String  @id @default(auto()) @map("_id") @db.ObjectId
+  promotionsOffer  String
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
 enum UserRole {
   ADMIN
   RIDER
