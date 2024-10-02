@@ -12,7 +12,7 @@ const createPromotionsIntoDB = async (payload: any) => {
 
 const getPromotionsOfferIntoDB = async () => {
   const promotions = await prisma.offer.findMany();
-  if (!promotions) {
+  if (promotions.length === 0) {
     throw new ApiError(404, "promotions not found!");
   }
   return promotions;
