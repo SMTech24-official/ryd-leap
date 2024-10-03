@@ -3,7 +3,7 @@ import sendResponse from "../../../shared/sendResponse";
 import { rideHistoryServices } from "./rideHistory.service";
 
 const createRideHistory = catchAsync(async (req, res) => {
-  const { userId } = req.params;
+  const userId = req.user.id;
 
   const rideData = {
     ...req.body,
@@ -21,7 +21,7 @@ const createRideHistory = catchAsync(async (req, res) => {
 });
 
 const getRideHistory = catchAsync(async (req, res) => {
-  const { userId } = req.params;
+  const userId = req.user.id;
   const result = await rideHistoryServices.getRideHistoryIntoDB(userId);
 
   sendResponse(res, {

@@ -22,11 +22,20 @@ const createRideHistoryIntoDB = async (rideData: any) => {
   return rideRequest;
 };
 
+//user rider history
 const getRideHistoryIntoDB = async (userId: string) => {
   const history = await prisma.rideHistory.findMany({
     where: { userId },
     include: {
-      user: true,
+      user: {
+        select: {
+          id: true,
+          email: true,
+          phoneNumber: true,
+          role: true,
+          status: true,
+        },
+      },
     },
   });
 
