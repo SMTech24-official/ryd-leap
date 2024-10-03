@@ -4,6 +4,7 @@ import { AuthRoutes } from "../modules/Autrh/auth.routes";
 import { SendMessageRoutes } from "../modules/otp/otp.route";
 import { RiderVehicleInfoRoutes } from "../modules/riderVehicleInfo/riderVehicleInfo.route";
 import { promotionsRoute } from "../modules/promotions/promotion.routes";
+import { rideHistoryRoutes } from "../modules/rideHistory/rideHistory.route";
 
 const router = express.Router();
 
@@ -27,6 +28,10 @@ const moduleRoutes = [
   {
     path: "/promotions",
     route: promotionsRoute,
+  },
+  {
+    path: "/ride-history",
+    route: rideHistoryRoutes,
   },
 ];
 
