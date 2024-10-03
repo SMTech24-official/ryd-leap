@@ -4,7 +4,11 @@ import { rideHistoryServices } from "./rideHistory.service";
 
 const createRideHistory = catchAsync(async (req, res) => {
   const { userId } = req.params;
-  const rideData = { ...req.body, user: userId };
+
+  const rideData = {
+    ...req.body,
+    userId,
+  };
 
   const result = await rideHistoryServices.createRideHistoryIntoDB(rideData);
 

@@ -1,26 +1,35 @@
 import prisma from "../../../shared/prisma";
 import ApiError from "../../errors/ApiErrors";
 
-const createRideHistoryIntoDB = async (payload: any) => {
-  const { user, ...restPayload } = payload;
-  const rideHistory = await prisma.rideHistory.create({
-    data: {
-      ...restPayload,
-      user: {
-        connect: {
-          id: user,
-        },
-      },
+const createRideHistoryIntoDB = async (rideData: any) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: rideData.userId,
     },
   });
 
-  return rideHistory;
+  if (user?.role !== "USER") {
+    throw new ApiError(
+      403,
+      "Access Denied: Only users can create ride request"
+    );
+  }
+
+  const rideRequest = await prisma.rideHistory.create({
+    data: rideData,
+  });
+
+  return rideRequest;
 };
 
 const getRideHistoryIntoDB = async (userId: string) => {
   const history = await prisma.rideHistory.findMany({
     where: { userId },
+    include: {
+      user: true,
+    },
   });
+
   if (history.length === 0) {
     throw new ApiError(404, "Ride History Not Found!");
   }
