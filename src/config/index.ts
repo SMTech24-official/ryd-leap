@@ -28,4 +28,12 @@ export default {
     authToken: process.env.TWILIO_AUTH_TOKEN,
     twilioPhoneNumber: process.env.TWILIO_PHONE_NUMBER,
   },
+  socialLogin: {
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    // facebookClientId:process.env.FACEBOOK_CLIENT_ID,
+    // facebookClientSecret:process.env.FACEBOOK_CLIENT_SECRET,
+    // githubClientId:process.env.GITHUB_CLIENT_ID,
+    // githubClientSecret:process.env.GITHUB_CLIENT_SECRET,
+  },
 };

@@ -7,6 +7,7 @@ import GlobalErrorHandler from "./app/middlewares/globalErrorHandler";
 import router from "./app/routes";
 import path from "path";
 import bodyParser from "body-parser";
+import { socialRoutes } from "./app/modules/socialLogin/socialRoutes";
 const app: Application = express();
 export const corsOptions = {
   origin: ["http://localhost:3001", "http://localhost:3000"],
@@ -35,6 +36,7 @@ app.get("/", (req: Request, res: Response) => {
 
 // Router setup
 app.use("/api/v1", router);
+app.use('/auth', socialRoutes);
 
 // Error handling middleware
 app.use(GlobalErrorHandler);

@@ -3,6 +3,7 @@ import path from "path";
 import prisma from "../shared/prisma";
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
+    // cb(null, path.join( "/var/www/uploads"));
     cb(null, path.join(process.cwd(), "uploads"));
   },
   filename: async function (req, file, cb) {

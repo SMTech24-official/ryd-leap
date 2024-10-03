@@ -5,6 +5,7 @@ import { UserValidation } from "../User/user.validation";
 import auth from "../../middlewares/auth";
 import { UserRole } from "@prisma/client";
 import { authValidation } from "./auth.validation";
+import passport from "passport";
 
 const router = express.Router();
 
@@ -37,5 +38,14 @@ router.post("/forgot-password", AuthController.forgotPassword);
 
 router.post("/reset-password", AuthController.resetPassword);
 router.patch("/reset-password-app", AuthController.resetPasswordFromApp);
+
+// social login
+// Initiate Google login
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+// Handle the Google OAuth callback
+router.get('/google/callback', passport.authenticate('google', { session: false }), (req, res) => {
+  // JWT generation and response here
+});
 
 export const AuthRoutes = router;

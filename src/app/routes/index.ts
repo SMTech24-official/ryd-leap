@@ -4,6 +4,7 @@ import { AuthRoutes } from "../modules/Autrh/auth.routes";
 import { SendMessageRoutes } from "../modules/otp/otp.route";
 import { RiderVehicleInfoRoutes } from "../modules/riderVehicleInfo/riderVehicleInfo.route";
 import { promotionsRoute } from "../modules/promotions/promotion.routes";
+import { socialRoutes } from "../modules/socialLogin/googleLogin.route";
 
 
 const router = express.Router();
