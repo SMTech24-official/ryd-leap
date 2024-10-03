@@ -3,7 +3,7 @@ import sendResponse from "../../../shared/sendResponse";
 import { contactService } from "./contact.service";
 
 const sendEmailSupport = catchAsync(async (req, res) => {
-  const { userId } = req.params;
+  const userId = req.user.id;
 
   await contactService.sendEmailSupportIntoDB(req.body, userId);
 
